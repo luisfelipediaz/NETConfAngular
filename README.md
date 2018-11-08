@@ -1,27 +1,44 @@
 # NETConfAngular
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.0.4.
+Este proyecto es una aplicacion de TODO List, el front-end esta desarrollado en Angular y el back-end esta desarrolada en .NET Core Web API
 
-## Development server
+## Generalidades
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+- Debe tener 3 columnas:
+1. TODO
+2. WIP
+3. DONE
 
-## Code scaffolding
+- El modelo de datos será:
+    `name: string`
+    `description: string`
+    `dateTo: Date`
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- Las tareas deben poderse cambiar de estado.
+- Las tareas deben estar de color verde si la fecha de entrega es mayor a dos dias de la fecha actual, en amarillo cuando está a menos o igual de dos días y en rojo si se pasó la fecha de entrega.​
+- Debe conectarse al API desarrollado en paralelo.
 
-## Build
+## Primer paso, creemos el componente board
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+Corramos  `ng generate component board` para generar el componente donde estará alojado nuestro tablero de tareas.
 
-## Running unit tests
+## Configurando el routing
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Para configurar el componente de board como una nueva ruta en la aplicación, vamos al archivo `app-routing.module.ts` y allí encontramos una linea de código similar a esta `const routes: Routes = [];` modifiquemosla de tal manera que quede:
 
-## Running end-to-end tests
+```typescript
+    const routes: Routes = [
+        {
+            path: 'board',
+            component: BoardComponent
+        }
+    ];
+```
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+para que esta configuración funcione correctamente es necesario agregar el import `import { BoardComponent } from './board/board.component';`
 
-## Further help
+### Como creé este proyecto?
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+- Primero instalamos Angular CLI: `npm install -g @angular/cli`
+- Creamos el proyecto: `ng new NETConfAngular --routing --style scss`
+- Instalamos Bootstrap (opcional): `npm install bootstrap --save`
