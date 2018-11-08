@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Tasks } from '../task';
 
 @Component({
   selector: 'app-board',
@@ -6,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./board.component.scss']
 })
 export class BoardComponent implements OnInit {
+  tasks: Tasks;
 
   constructor() { }
 
