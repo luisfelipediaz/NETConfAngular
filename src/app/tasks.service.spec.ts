@@ -1,9 +1,12 @@
 import { TestBed } from '@angular/core/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 import { TasksService } from './tasks.service';
 
 describe('TasksService', () => {
-  beforeEach(() => TestBed.configureTestingModule({}));
+  beforeEach(() => TestBed.configureTestingModule({
+    imports: [HttpClientTestingModule]
+  }));
 
   it('should be created', () => {
     const service: TasksService = TestBed.get(TasksService);

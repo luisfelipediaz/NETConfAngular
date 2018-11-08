@@ -1,8 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 import { BoardComponent } from './board.component';
 import { By } from '@angular/platform-browser';
-import { Tasks } from '../task';
 import { State } from '../state.enum';
 import { of } from 'rxjs';
 
@@ -12,7 +13,9 @@ describe('BoardComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [BoardComponent]
+      declarations: [BoardComponent],
+      schemas: [NO_ERRORS_SCHEMA],
+      imports: [HttpClientTestingModule]
     })
       .compileComponents();
   }));
@@ -64,20 +67,8 @@ describe('BoardComponent', () => {
 
     fixture.detectChanges();
 
-    const tasks = fixture.debugElement.queryAll(By.css('div.card'));
-    const [task1, task2, task3] = tasks;
+    const tasks = fixture.debugElement.queryAll(By.css('app-task'));
 
     expect(tasks.length).toBe(3);
-    expect(task1.query(By.css('.card-title')).nativeElement.textContent).toBe('Task 1');
-    expect(task1.query(By.css('.card-subtitle')).nativeElement.textContent).toBe('Description task 1');
-    expect(task1.query(By.css('span.date')).nativeElement.textContent).toBe('01/01/2018');
-
-    expect(task2.query(By.css('.card-title')).nativeElement.textContent).toBe('Task 2');
-    expect(task2.query(By.css('.card-subtitle')).nativeElement.textContent).toBe('Description task 2');
-    expect(task2.query(By.css('span.date')).nativeElement.textContent).toBe('01/02/2018');
-
-    expect(task3.query(By.css('.card-title')).nativeElement.textContent).toBe('Task 3');
-    expect(task3.query(By.css('.card-subtitle')).nativeElement.textContent).toBe('Description task 3');
-    expect(task3.query(By.css('span.date')).nativeElement.textContent).toBe('01/03/2018');
   });
 });
