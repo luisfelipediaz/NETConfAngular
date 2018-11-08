@@ -64,3 +64,11 @@ h2 {
     border-bottom: 2px solid gray;
 }
 ````
+
+El el archivo `style.scss`:
+
+```scss
+html, body {
+    height: 100%;
+}
+```
