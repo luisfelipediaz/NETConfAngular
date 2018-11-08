@@ -6,6 +6,11 @@ const routes: Routes = [
   {
     path: 'board',
     component: BoardComponent
+  },
+  {
+    path: '',
+    pathMatch: 'full',
+    redirectTo: '/board'
   }
 ];
 

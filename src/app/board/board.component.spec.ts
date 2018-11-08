@@ -4,6 +4,7 @@ import { BoardComponent } from './board.component';
 import { By } from '@angular/platform-browser';
 import { Tasks } from '../task';
 import { State } from '../state.enum';
+import { of } from 'rxjs';
 
 describe('BoardComponent', () => {
   let component: BoardComponent;
@@ -37,7 +38,7 @@ describe('BoardComponent', () => {
   });
 
   it('debe pintar 3 tareas en la columnas de TODO', () => {
-    component.tasks = <Tasks>[
+    component.tasks$ = of([
       {
         id: 1,
         name: 'Task 1',
@@ -59,7 +60,7 @@ describe('BoardComponent', () => {
         date: new Date(2018, 2, 1),
         state: State.TODO
       }
-    ];
+    ]);
 
     fixture.detectChanges();
 

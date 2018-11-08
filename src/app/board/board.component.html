@@ -3,7 +3,7 @@
     <div class="row board">
       <div class="col-4 text-center">
         <h2>TODO</h2>
-        <div *ngFor="let task of tasks" class="card">
+        <div *ngFor="let task of tasks$ | async" class="card">
           <div class="card-body">
             <h5 class="card-title">{{ task.name }}</h5>
             <h6 class="card-subtitle">{{ task.description }}</h6>
