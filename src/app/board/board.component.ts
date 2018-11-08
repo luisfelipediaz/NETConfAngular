@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Tasks } from '../task';
+import { Tasks, Task, TasksGrouped } from '../task';
+import { Observable, of } from 'rxjs';
+import { switchMap, map } from 'rxjs/operators';
+import { State } from '../state.enum';
 
 @Component({
   selector: 'app-board',

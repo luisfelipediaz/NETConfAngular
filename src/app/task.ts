@@ -9,3 +9,7 @@ export interface Task {
     date: Date;
     state: State;
 }
+
+export interface TasksGrouped {
+    [id: string]: Task[];
+}

@@ -1,0 +1,37 @@
+[
+    {
+        "id": 1,
+        "name": "Task 1",
+        "description": "Description task 1",
+        "date": "01/01/2018",
+        "state": 1
+    },
+    {
+        "id": 2,
+        "name": "Task 2",
+        "description": "Description task 2",
+        "date": "01/02/2018",
+        "state": 1
+    },
+    {
+        "id": 3,
+        "name": "Task 3",
+        "description": "Description task 3",
+        "date": "01/03/2018",
+        "state": 1
+    },
+    {
+        "id": 4,
+        "name": "Task 4",
+        "description": "Description task 4",
+        "date": "01/03/2018",
+        "state": 2
+    },
+    {
+        "id": 5,
+        "name": "Task 5",
+        "description": "Description task 5",
+        "date": "01/03/2018",
+        "state": 3
+    }
+]
