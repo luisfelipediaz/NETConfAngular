@@ -5,9 +5,9 @@ Este proyecto es una aplicacion de TODO List, el front-end esta desarrollado en 
 ## Generalidades
 
 - Debe tener 3 columnas:
-1. TODO
-2. WIP
-3. DONE
+    1. TODO
+    2. WIP
+    3. DONE
 
 - El modelo de datos será:
     `name: string`
