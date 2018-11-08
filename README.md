@@ -72,3 +72,43 @@ html, body {
     height: 100%;
 }
 ```
+
+### Pintemos las tareas del To Do
+
+Creemos el enumerable de estados de las tareas:
+`ng g enum State`
+
+Creemos la interfaz para la representación de los datos:
+`ng g interface Task`
+
+La interfaz debe quedar algo como:
+
+```typescript
+import { State } from './state.enum';
+
+export type Tasks = Task[];
+
+export interface Task {
+    id: number;
+    name: string;
+    description: string;
+    date: Date;
+    state: State;
+}
+```
+
+En el `board.component.ts`:
+```typescript
+  tasks: Tasks;
+```
+
+En el `board.component.html` debajo de `<h2>TODO</h2>`:
+```html
+<div *ngFor="let task of tasks" class="card">
+  <div class="card-body">
+    <h5 class="card-title">{{ task.name }}</h5>
+    <h6 class="card-subtitle">{{ task.description }}</h6>
+    <p class="card-text"><span class="date">{{ task.date | date: 'dd/MM/yyyy' }}</span></p>
+  </div>
+</div>
+```
