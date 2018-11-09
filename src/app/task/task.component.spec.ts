@@ -1,9 +1,10 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
+import { By } from '@angular/platform-browser';
 
 import { TaskComponent } from './task.component';
 import { State } from '../state.enum';
-import { By } from '@angular/platform-browser';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('TaskComponent', () => {
   let component: TaskComponent;
@@ -12,7 +13,8 @@ describe('TaskComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
-      declarations: [TaskComponent]
+      declarations: [TaskComponent],
+      schemas: [NO_ERRORS_SCHEMA]
     })
       .compileComponents();
   }));
