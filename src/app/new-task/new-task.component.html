@@ -1,6 +1,23 @@
-<form [formGroup]="register" (ngSubmit)="save()">
-  <input type="text" name="name">
-  <input type="text" name="description">
-  <input type="date" name="date">
-  <button type="submit" [disabled]="register.invalid">Guardar</button>
-</form>
+<div class="row justify-content-md-center">
+  <form class="col-12 col-md-6 card" [formGroup]="register" (ngSubmit)="save()">
+    <div class="card-body">
+      <h5 class="card-title">Nueva tarea</h5>
+    </div>
+    <div class="card-body">
+      <div class="form-group">
+        <input type="text" class="form-control" name="name" placeholder="Nombre" formControlName="name">
+      </div>
+      <div class="form-group">
+        <input type="text" class="form-control" name="description" placeholder="Descripción" formControlName="description">
+      </div>
+      <div class="form-group">
+        <input type="date" class="form-control" name="date" placeholder="Fecha" formControlName="date">
+      </div>
+      <div class="form-group">
+        <div class="row justify-content-md-center">
+          <button type="submit" class="btn btn-success col-12 col-md-6" [disabled]="register.invalid">Guardar</button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

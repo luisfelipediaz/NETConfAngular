@@ -21,11 +21,15 @@ export class TasksService {
   }
 
   getTasksGrouped(): Observable<TasksGrouped> {
-    return this.http.get<Tasks>('').pipe(
+    return this.http.get<Tasks>(environment.urlTasks).pipe(
       map(tasks =>
         tasks.reduce(this.pushTaskToDictionary, {})
       )
     );
+  }
+
+  newTask(task: Task): Observable<string> {
+    return this.http.post<string>(environment.urlTasks, task);
   }
 
   private pushTaskToDictionary(tasksGrouped: TasksGrouped, task: Task): TasksGrouped {

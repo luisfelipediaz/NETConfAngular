@@ -1,17 +1,40 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
+import { By } from '@angular/platform-browser';
+import { ReactiveFormsModule } from '@angular/forms';
+
+import { of } from 'rxjs';
 
 import { NewTaskComponent } from './new-task.component';
-import { By } from '@angular/platform-browser';
-import { FormBuilder } from '@angular/forms';
+import { TasksService } from '../tasks.service';
+import { Task } from '../task';
+import { Router } from '@angular/router';
 
 describe('NewTaskComponent', () => {
   let component: NewTaskComponent;
   let fixture: ComponentFixture<NewTaskComponent>;
+  let taskServiceMock: TasksService;
+  let routerMock: Router;
 
   beforeEach(async(() => {
+
+    taskServiceMock = jasmine.createSpyObj('TasksService', {
+      newTask: of('OK')
+    });
+
+    routerMock = jasmine.createSpyObj('Router', ['navigateByUrl']);
+
     TestBed.configureTestingModule({
+      imports: [
+        HttpClientTestingModule,
+        ReactiveFormsModule
+      ],
       declarations: [NewTaskComponent],
-      providers: [FormBuilder]
+      providers: [
+        { provide: TasksService, useValue: taskServiceMock },
+        { provide: Router, useValue: routerMock }
+      ]
     })
       .compileComponents();
   }));
@@ -40,5 +63,19 @@ describe('NewTaskComponent', () => {
     const boton = fixture.debugElement.query(By.css('button[type="submit"]'));
 
     expect(boton).toBeTruthy();
+  });
+
+  it('debe llamar el servicio de guardado cuando el formulario esta completo', () => {
+    const expected: Task = <Task>{
+      name: 'task1',
+      description: 'desc',
+      date: new Date()
+    };
+
+    component.register.setValue(expected);
+
+    component.save();
+
+    expect(taskServiceMock.newTask).toHaveBeenCalledWith(expected);
   });
 });

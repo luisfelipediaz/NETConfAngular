@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
+import { TasksService } from '../tasks.service';
 
 @Component({
   selector: 'app-new-task',
@@ -8,7 +11,11 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 export class NewTaskComponent implements OnInit {
   register: FormGroup;
 
-  constructor(private fb: FormBuilder) { }
+  constructor(
+    private fb: FormBuilder,
+    private taskService: TasksService,
+    private router: Router
+  ) { }
 
   ngOnInit() {
     this.register = this.fb.group({
@@ -19,7 +26,12 @@ export class NewTaskComponent implements OnInit {
   }
 
   save() {
-
+    this.taskService
+      .newTask(this.register.value)
+      .subscribe(() => {
+        this.router.navigateByUrl('/board');
+        alert('Tarea registrada con éxito');
+      });
   }
 
 }
