@@ -1,24 +1,11 @@
 <div class="row justify-content-md-center">
   <div class="col-sm-10 col-12" *ngIf="tasks$ | async as tasks; else loading">
     <div class="row board">
-      <div class="col-4 text-center">
-        <h2>TODO</h2>
-        <app-task [task]="task" *ngFor="let task of tasks.TODO" (change)="reload()"></app-task>
-        <div class="card new-task mb-3" (click)="goToNewTask()">
-          <div class="card-body">
-            <h5 class="card-title">+</h5>
-            <h6 class="card-subtitle">Nueva tarea</h6>
-          </div>
-        </div>
-      </div>
-      <div class="col-4 text-center">
-        <h2>WIP</h2>
-        <app-task [task]="task" *ngFor="let task of tasks.WIP" (change)="reload()"></app-task>
-      </div>
-      <div class="col-4 text-center">
-        <h2>DONE</h2>
-        <app-task [task]="task" *ngFor="let task of tasks.DONE" (change)="reload()"></app-task>
-      </div>
+      <app-column class="col-4" name="TODO" [tasks]="tasks.TODO" (change)="reload()">
+        <app-new-task-button></app-new-task-button>
+      </app-column>
+      <app-column class="col-4" name="WIP" [tasks]="tasks.WIP" (change)="reload()"></app-column>
+      <app-column class="col-4" name="DONE" [tasks]="tasks.DONE" (change)="reload()"></app-column>
     </div>
   </div>
   <ng-template #loading>

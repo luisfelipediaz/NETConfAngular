@@ -28,7 +28,10 @@ export class TaskComponent implements OnInit {
   }
 
   remove() {
-    this.tasksService.delete(this.task.id);
+    this.tasksService.delete(this.task.id)
+      .subscribe(() => {
+        this.change.emit();
+      });
   }
 
   private modifyAndNotify() {

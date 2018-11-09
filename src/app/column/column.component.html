@@ -1,0 +1,5 @@
+<div class="text-center">
+  <h2>{{ name }}</h2>
+  <app-task [task]="task" *ngFor="let task of tasks" (change)="changeTask()"></app-task>
+  <ng-content></ng-content>
+</div>

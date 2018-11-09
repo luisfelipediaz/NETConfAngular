@@ -16,15 +16,11 @@ export class BoardComponent implements OnInit {
 
   constructor(
     private tasksService: TasksService,
-    private router: Router
+
   ) { }
 
   ngOnInit() {
     this.loadTasks();
-  }
-
-  goToNewTask() {
-    this.router.navigateByUrl('/new-task');
   }
 
   reload() {

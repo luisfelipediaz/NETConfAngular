@@ -1,0 +1,5 @@
+<div class="d-flex justify-content-center">
+  <button class="btn btn-primary btn-sm mr-1" *ngIf="state != 1" (click)="prevState()">&lt;</button>
+  <button class="btn btn-danger btn-sm mr-1" (click)="remove()">X</button>
+  <button class="btn btn-primary btn-sm" *ngIf="state != 3" (click)="nextState()">&gt;</button>
+</div>
