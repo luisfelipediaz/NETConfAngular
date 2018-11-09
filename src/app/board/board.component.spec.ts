@@ -21,7 +21,7 @@ describe('BoardComponent', () => {
     routerMock = jasmine.createSpyObj('Router', ['navigateByUrl']);
 
     tasksServiceMock = jasmine.createSpyObj('TasksService', {
-      getTasksGrouped: of({
+      getGrouped: of({
         TODO: [
           {
             id: 1,

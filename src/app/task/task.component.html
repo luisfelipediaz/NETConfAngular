@@ -6,15 +6,9 @@
   </div>
   <div class="card-footer text-muted">
     <div class="d-flex justify-content-center">
-      <button class="btn btn-primary btn-sm mr-1" *ngIf="task.state != 1" (click)="nextState()">
-        &lt;
-      </button>
-      <button class="btn btn-danger btn-sm mr-1" (click)="remove()">
-        X
-      </button>
-      <button class="btn btn-primary btn-sm" *ngIf="task.state != 3" (click)="prevState()">
-        &gt;
-      </button>
+      <button class="btn btn-primary btn-sm mr-1" *ngIf="task.state != 1" (click)="prevState()">&lt;</button>
+      <button class="btn btn-danger btn-sm mr-1" (click)="remove()">X</button>
+      <button class="btn btn-primary btn-sm" *ngIf="task.state != 3" (click)="nextState()">&gt;</button>
     </div>
   </div>
 </div>

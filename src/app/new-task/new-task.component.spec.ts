@@ -20,7 +20,7 @@ describe('NewTaskComponent', () => {
   beforeEach(async(() => {
 
     taskServiceMock = jasmine.createSpyObj('TasksService', {
-      newTask: of('OK')
+      add: of('OK')
     });
 
     routerMock = jasmine.createSpyObj('Router', ['navigateByUrl']);
