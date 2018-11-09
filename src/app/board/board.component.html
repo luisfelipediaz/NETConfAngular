@@ -1,9 +1,15 @@
 <div class="row justify-content-md-center">
-  <div class="col-sm-10 col-12" *ngIf="tasks$ | async as tasks">
+  <div class="col-sm-10 col-12" *ngIf="tasks$ | async as tasks; else loading">
     <div class="row board">
       <div class="col-4 text-center">
         <h2>TODO</h2>
         <app-task [task]="task" *ngFor="let task of tasks.TODO"></app-task>
+        <div class="card new-task" (click)="goToNewTask()">
+          <div class="card-body">
+            <h5 class="card-title">+</h5>
+            <h6 class="card-subtitle">Nueva tarea</h6>
+          </div>
+        </div>
       </div>
       <div class="col-4 text-center">
         <h2>WIP</h2>
@@ -15,4 +21,7 @@
       </div>
     </div>
   </div>
+  <ng-template #loading>
+    Cargando...
+  </ng-template>
 </div>

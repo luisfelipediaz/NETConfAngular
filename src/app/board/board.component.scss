@@ -19,3 +19,9 @@
 h2 {
     border-bottom: 2px solid gray;
 }
+
+.new-task:hover {
+    cursor: pointer;
+    border-color: green;
+    color: green;
+}
