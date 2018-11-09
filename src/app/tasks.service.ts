@@ -23,7 +23,7 @@ export class TasksService {
   getTasksGrouped(): Observable<TasksGrouped> {
     return this.http.get<Tasks>(environment.urlTasks).pipe(
       map(tasks =>
-        tasks.reduce(this.pushTaskToDictionary, {})
+        tasks.reduce((prev, task) => this.pushTaskToDictionary(prev, task), {})
       )
     );
   }

@@ -17,6 +17,10 @@ export class BoardComponent implements OnInit {
 
   ngOnInit() {
     this.tasks$ = this.tasksService.getTasks();
+    this.tasksService.getTasksGrouped()
+      .subscribe(data => {
+        debugger;
+      });
   }
 
 }
