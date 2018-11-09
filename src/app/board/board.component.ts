@@ -11,16 +11,12 @@ import { TasksService } from '../tasks.service';
   styleUrls: ['./board.component.scss']
 })
 export class BoardComponent implements OnInit {
-  tasks$: Observable<Tasks>;
+  tasks$: Observable<TasksGrouped>;
 
   constructor(private tasksService: TasksService) { }
 
   ngOnInit() {
-    this.tasks$ = this.tasksService.getTasks();
-    this.tasksService.getTasksGrouped()
-      .subscribe(data => {
-        debugger;
-      });
+    this.tasks$ = this.tasksService.getTasksGrouped();
   }
 
 }

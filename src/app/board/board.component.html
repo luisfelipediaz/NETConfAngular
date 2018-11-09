@@ -1,15 +1,17 @@
 <div class="row justify-content-md-center">
-  <div class="col-sm-10 col-12">
+  <div class="col-sm-10 col-12" *ngIf="tasks$ | async as tasks">
     <div class="row board">
       <div class="col-4 text-center">
         <h2>TODO</h2>
-        <app-task [task]="task" *ngFor="let task of tasks$ | async"></app-task>
+        <app-task [task]="task" *ngFor="let task of tasks.TODO"></app-task>
       </div>
       <div class="col-4 text-center">
         <h2>WIP</h2>
+        <app-task [task]="task" *ngFor="let task of tasks.WIP"></app-task>
       </div>
       <div class="col-4 text-center">
         <h2>DONE</h2>
+        <app-task [task]="task" *ngFor="let task of tasks.DONE"></app-task>
       </div>
     </div>
   </div>
