@@ -27,7 +27,7 @@ export class NewTaskComponent implements OnInit {
 
   save() {
     this.taskService
-      .newTask(this.register.value)
+      .add(this.register.value)
       .subscribe(() => {
         this.router.navigateByUrl('/board');
         alert('Tarea registrada con éxito');

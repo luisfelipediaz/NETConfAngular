@@ -3,8 +3,8 @@
     <div class="row board">
       <div class="col-4 text-center">
         <h2>TODO</h2>
-        <app-task [task]="task" *ngFor="let task of tasks.TODO"></app-task>
-        <div class="card new-task" (click)="goToNewTask()">
+        <app-task [task]="task" *ngFor="let task of tasks.TODO" (change)="reload()"></app-task>
+        <div class="card new-task mb-3" (click)="goToNewTask()">
           <div class="card-body">
             <h5 class="card-title">+</h5>
             <h6 class="card-subtitle">Nueva tarea</h6>
@@ -13,11 +13,11 @@
       </div>
       <div class="col-4 text-center">
         <h2>WIP</h2>
-        <app-task [task]="task" *ngFor="let task of tasks.WIP"></app-task>
+        <app-task [task]="task" *ngFor="let task of tasks.WIP" (change)="reload()"></app-task>
       </div>
       <div class="col-4 text-center">
         <h2>DONE</h2>
-        <app-task [task]="task" *ngFor="let task of tasks.DONE"></app-task>
+        <app-task [task]="task" *ngFor="let task of tasks.DONE" (change)="reload()"></app-task>
       </div>
     </div>
   </div>

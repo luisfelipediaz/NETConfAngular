@@ -20,11 +20,19 @@ export class BoardComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.tasks$ = this.tasksService.getTasksGrouped();
+    this.loadTasks();
   }
 
   goToNewTask() {
     this.router.navigateByUrl('/new-task');
+  }
+
+  reload() {
+    this.loadTasks();
+  }
+
+  private loadTasks() {
+    this.tasks$ = this.tasksService.getGrouped();
   }
 
 }

@@ -16,11 +16,11 @@ export class TasksService {
 
   constructor(private http: HttpClient) { }
 
-  getTasks(): Observable<Tasks> {
+  get(): Observable<Tasks> {
     return this.http.get<Tasks>(environment.urlTasks);
   }
 
-  getTasksGrouped(): Observable<TasksGrouped> {
+  getGrouped(): Observable<TasksGrouped> {
     return this.http.get<Tasks>(environment.urlTasks).pipe(
       map(tasks =>
         tasks.reduce((prev, task) => this.pushTaskToDictionary(prev, task), {})
@@ -28,8 +28,16 @@ export class TasksService {
     );
   }
 
-  newTask(task: Task): Observable<string> {
+  add(task: Task): Observable<string> {
     return this.http.post<string>(environment.urlTasks, task);
+  }
+
+  modify(task: Task): Observable<boolean> {
+    return this.http.put<boolean>(`${environment.urlTasks}/${task.id}`, task);
+  }
+
+  delete(id: number): Observable<boolean> {
+    return this.http.delete<boolean>(`${environment.urlTasks}/${id}`);
   }
 
   private pushTaskToDictionary(tasksGrouped: TasksGrouped, task: Task): TasksGrouped {

@@ -76,6 +76,6 @@ describe('NewTaskComponent', () => {
 
     component.save();
 
-    expect(taskServiceMock.newTask).toHaveBeenCalledWith(expected);
+    expect(taskServiceMock.add).toHaveBeenCalledWith(expected);
   });
 });
