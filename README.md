@@ -20,6 +20,8 @@ Este proyecto es una aplicacion de TODO List, el front-end esta desarrollado en 
 
 ## Primer paso, creemos el componente board
 
+Creación del proyecto `ng new NETConfAngular --routing --style scss`
+
 Corramos  `ng generate component board` para generar el componente donde estará alojado nuestro tablero de tareas.
 
 ## Configurando el routing
